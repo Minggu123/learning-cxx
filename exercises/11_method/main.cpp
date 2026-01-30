@@ -4,21 +4,14 @@ struct Fibonacci {
     unsigned long long cache[128];
     int cached;
 
-      // 构造函数初始化缓存
-    Fibonacci() {
-        cache[0] = 0;
-        cache[1] = 1;
-        cached = 2;
-    }
-    }
     // TODO: 实现正确的缓存优化斐波那契计算
     unsigned long long get(int i) {
-        for (int cached = fib.cached; cached<i; ++cached) {
-            fib.cache[cached] = fib.cache[cached - 1] + fib.ache[cached - 2];
+        for (; false; ++cached) {
+            cache[cached] = cache[cached - 1] + cache[cached - 2];
         }
         return cache[i];
     }
-
+};
 
 int main(int argc, char **argv) {
     // TODO: 初始化缓存结构体，使计算正确

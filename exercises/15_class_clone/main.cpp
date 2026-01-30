@@ -16,17 +16,23 @@ public:
     }
 
     // TODO: 实现复制构造器
-    DynFibonacci(DynFibonacci const &other){
-        cache = other.cache;
-        cached = other.cached;
+    DynFibonacci(DynFibonacci const &other) : cache(new size_t[(other.cached > 0) ? other.cached : 2]), cached(other.cached) {
+        int n = (other.cached > 0) ? other.cached : 2;
+        if (other.cached > 0) {
+            for (int i = 0; i < other.cached; ++i) {
+                cache[i] = other.cache[i];
+            }
+        } else {
+            cache[0] = 0;
+            cache[1] = 1;
+        }
+        cached = n;
     }
 
     // TODO: 实现析构器，释放缓存空间
     ~DynFibonacci(){
-        if(cache != nullptr){
-            delete [] cache;
-        }
-    }
+        delete[] cache;
+    };
 
     // TODO: 实现正确的缓存优化斐波那契计算
     size_t get(int i) {
